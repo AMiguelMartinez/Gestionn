@@ -7,5 +7,6 @@ const pgDatabase = new Client ({
     password: 'm1gu3l4543',
     database: 'gestion'
 })
+
 pgDatabase.connect()
 export default pgDatabase;

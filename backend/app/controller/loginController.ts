@@ -1,5 +1,5 @@
 import pgDatabase from "../database/pgDatabase.js";
-import hash from "@adonisjs/core/src/hash";
+import hash from "@adonisjs/core/services/hash";
 
 class loginController {
 
@@ -8,7 +8,7 @@ class loginController {
 
       const newpass = await hash.make(password);
 
-      const respuesta = await pgDatabase.query('insert into usuario (email, password) values ($1, $2)', [email, newpass]);
+      const respuesta = await pgDatabase.query('insert into presidente (email, password) values ($1, $2)', [email, newpass]);
 
       console.log(respuesta.rowCount);
 
@@ -26,7 +26,7 @@ class loginController {
   async login({request, response}){
     const {email, password} = request.body();
 
-    const respuesta = await pgDatabase.query('select * from usuario where email = $1', [email]);
+    const respuesta = await pgDatabase.query('select * from presidente where email = $1', [email]);
 
 
     if (respuesta.rows.length > 0) {
