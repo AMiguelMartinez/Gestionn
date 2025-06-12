@@ -2,7 +2,11 @@ import equipoController from "../../app/controller/equipoController.js";
 import Router from "@adonisjs/core/services/router";
 
 const equipos = new equipoController()
+
 Router.get('/equipo/:nombre',equipos.obtenerEquipo);
+
+Router.get('/equipo',equipos.obtenerEquipo);
+
 Router.post('/equipo', equipos.crearEquipo);
 Router.put('/equipo/:nombre', equipos.actualizarEquipo);
 Router.delete('/equipo/:nombre', equipos.eliminarEquipo);
