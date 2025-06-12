@@ -4,7 +4,7 @@ const pgDatabase = new Client ({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: 'm1gu3l4543',
+    password: '2530',
     database: 'gestion'
 })
 

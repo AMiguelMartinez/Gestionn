@@ -23,14 +23,14 @@ class presiController {
     return response.json({mensaje: 'El presidente ha sido actualizado'})
  }
 
-async eliminarPresi({params, request, response}){
-    const id = params.dni
-    const res = await pgDatabase.query('delete from presidente where dni = $1', [id])
-    console.log(res)
-    return response.json({mensaje: 'Presidente eliminado'})
- }
- 
+async eliminarPresi({params,request,response}){
+        const dni= params.dni
+        const resu= await pgDatabase.query('delete from presidentes where dni=$1',[dni])
+        console.log(resu)
+        return response.json({mensaje: `el  presidente del dni ${dni} a sido eliminado`})
+    }
 
+ 
 }
 
 export default presiController;
