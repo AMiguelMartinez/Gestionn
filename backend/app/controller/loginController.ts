@@ -4,11 +4,11 @@ import hash from "@adonisjs/core/services/hash";
 class loginController {
 
   async register({request, response}){
-      const {email, password} = request.body();
+      const {email, password, nombre, telefono, direccion} = request.body();
 
       const newpass = await hash.make(password);
 
-      const respuesta = await pgDatabase.query('insert into presidente (email, password) values ($1, $2)', [email, newpass]);
+      const respuesta = await pgDatabase.query('insert into usuario (nombre, email, password, telefono, direccion) values ($1, $2, $3, $4, $5)', [nombre, email, newpass, telefono, direccion]);
 
       console.log(respuesta.rowCount);
 
@@ -26,7 +26,7 @@ class loginController {
   async login({request, response}){
     const {email, password} = request.body();
 
-    const respuesta = await pgDatabase.query('select * from presidente where email = $1', [email]);
+    const respuesta = await pgDatabase.query('select * from usuario where email = $1', [email]);
 
 
     if (respuesta.rows.length > 0) {

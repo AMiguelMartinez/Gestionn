@@ -3,8 +3,7 @@ import pgDatabase from "../database/pgDatabase.js";
 class equipoController {
   async obtenerEquipo({params, request,response}){
     const id = params.codigo
-    console.log(id)
-    const result = await pgDatabase.query('select * from equipo where codigo = $1', [id])
+    const result = await pgDatabase.query('select * from equipo')
     console.log(result.rows)
     return response.json({mensaje:result.rows})
   }  
