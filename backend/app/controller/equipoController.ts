@@ -9,8 +9,8 @@ class equipoController {
   }  
 
   async crearEquipo({ request, response }) {
-    const { nombre, anio_fund } = await request.body();
-    await pgDatabase.query('INSERT INTO equipo (nombre, anio_fund) VALUES ($1, $2)', [nombre, anio_fund]);
+    const { nombre, anio_fund,codigo } = await request.body();
+    await pgDatabase.query('INSERT INTO equipo (nombre, anio_fund,codigo) VALUES ($1, $2, $3)', [nombre, anio_fund,codigo]);
     return response.json({ mensaje: 'El equipo fue creado' });
   }
 
